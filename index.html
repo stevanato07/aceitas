@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sim ou Não</title>
+<style>
+  body {
+    background: #0d1117;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 40px;
+    font-size: 28px;
+  }
+
+  .botoes {
+    display: flex;
+    gap: 20px;
+  }
+
+  button {
+    padding: 18px 32px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  #sim {
+    background: #00d26a;
+    color: #fff;
+  }
+
+  #sim:hover {
+    background: #00b95c;
+  }
+
+  #nao {
+    background: #ff4444;
+    color: #fff;
+  }
+
+  #nao:hover {
+    background: #e03333;
+  }
+</style>
+</head>
+<body>
+  <h1>Vamos sair qualquer dia desses?</h1>
+
+  <div class="botoes">
+    <button id="sim">SIM</button>
+    <button id="nao">NÃO</button>
+  </div>
+
+  <script>
+    const sim = document.getElementById("sim");
+    const nao = document.getElementById("nao");
+
+    // URL de destino quando clicar em SIM
+    const urlSim = "https://w.app/dbeniy";
+
+    // URL para onde o "NÃO" vai teleportar
+    const urlNao = "https://example.com/nao";
+
+    sim.onclick = () => {
+      window.location.href = urlSim;
+    };
+
+    nao.onclick = () => {
+      // move o botão NÃO para um local aleatório na tela (teleporte)
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      nao.style.position = "absolute";
+      nao.style.left = `${x}px`;
+      nao.style.top = `${y}px`;
+    };
+  </script>
+</body>
+</html>
