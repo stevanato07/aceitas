@@ -1,92 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sim ou Não</title>
-<style>
-  body {
-    background: #0d1117;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-
-  h1 {
-    margin-bottom: 40px;
-    font-size: 28px;
-  }
-
-  .botoes {
-    display: flex;
-    gap: 20px;
-  }
-
-  button {
-    padding: 18px 32px;
-    font-size: 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  #sim {
-    background: #00d26a;
-    color: #fff;
-  }
-
-  #sim:hover {
-    background: #00b95c;
-  }
-
-  #nao {
-    background: #ff4444;
-    color: #fff;
-  }
-
-  #nao:hover {
-    background: #e03333;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linda</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .disabled {
+            cursor: not-allowed;
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-  <h1>Valorant Bo?</h1>
+    <H1 id="titleH1">Vamos ficar???</H1>
+     <div id="container" class="container">
+        <br>
+        <br>
+        <button id="sim" onclick="mensagem()">Sim</button>
+        <button id="nao" onclick="mudarPosicao()">Não</button>
+    </div>
 
-  <div class="botoes">
-    <button id="sim">SIM</button>
-    <button id="nao">NÃO</button>
-  </div>
+    <script>
+        function mudarPosicao() {
+            // Desabilita o botão
+            const btnNao = document.getElementById("nao");
+            // btnNao.disabled = true;
+            // btnNao.classList.add("disabled");
 
-  <script>
-    const sim = document.getElementById("sim");
-    const nao = document.getElementById("nao");
+            // Muda a posição do botão "Não"
+            const container = document.querySelector(".container");
+            container.appendChild(btnNao);
+            
+            // Mudando a posição aleatoriamente na tela
+            const x = Math.floor(Math.random() * (window.innerWidth - btnNao.offsetWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - btnNao.offsetHeight));
+            btnNao.style.position = "absolute";
+            btnNao.style.left = `${x}px`;
+            btnNao.style.top = `${y}px`;
+        }
 
-    // URL de destino quando clicar em SIM
-    const urlSim = "https://w.app/dbeniy";
+       function mensagem(){
+            const btnNao = document.getElementById("sim");
+            const container = document.getElementById('container')
+            const titleH1 = document.getElementById('titleH1')
+            container.style.display = 'none'
+            // titleH1.style.display = 'none'
+            titleH1.innerText = 'Viu? Sou bom no que faço'
+       }
+    </script>
 
-    // URL para onde o "NÃO" vai teleportar
-    const urlNao = "https://example.com/nao";
-
-    sim.onclick = () => {
-      window.location.href = urlSim;
-    };
-
-    nao.onclick = () => {
-      // move o botão NÃO para um local aleatório na tela (teleporte)
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      nao.style.position = "absolute";
-      nao.style.left = `${x}px`;
-      nao.style.top = `${y}px`;
-    };
-  </script>
 </body>
 </html>
-
